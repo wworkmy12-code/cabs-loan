@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./Packages.module.css";
+import { useNavigate } from "react-router-dom";
 
 const packages = [
   {
@@ -32,8 +34,17 @@ const packages = [
 ];
 
 export default function Packages() {
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [showPreview, setShowPreview] = useState(false);
+  const handlePackageSelect = (pkg) => {
+    setShowPreview(true);
+    // Handle package selection logic here (e.g., redirect to payment)
+    console.log("Selected package:", pkg);
+    setSelectedPackage(pkg);
+  };
   return (
     <div className={styles.container}>
+      {showPreview && <PackageCard selectedPackage={selectedPackage} />}
       <div className={styles.intro}>
         <h1>Join the Shared Satellite Network</h1>
         <p>
@@ -43,7 +54,7 @@ export default function Packages() {
           your plan and join the network instantly using MTN MoMo.
         </p>
       </div>
-      <PackageCard />
+
       <div className={styles.header}>
         <span className={styles.icon}>🛍️</span>
         <h2>Select Your Plan</h2>
@@ -51,7 +62,11 @@ export default function Packages() {
 
       <div className={styles.cards}>
         {packages.map((pkg) => (
-          <div key={pkg.id} className={styles.card}>
+          <div
+            key={pkg.id}
+            className={styles.card}
+            onClick={() => handlePackageSelect(pkg)}
+          >
             <div className={styles.cardTop}>
               <h3>{pkg.name}</h3>
               <span className={styles.tag}>{pkg.tag}</span>
@@ -70,15 +85,39 @@ export default function Packages() {
   );
 }
 
-function PackageCard({ name, description, price, tag }) {
+function PackageCard({ selectedPackage }) {
+  const { name, description, price, tag } = selectedPackage || {};
+  const [count, setCount] = useState(6);
+  const navigate = useNavigate();
+  const intervalRef = useRef(null);
+  useEffect(() => {
+    if (count === 1) {
+      // navigate("/login");
+    }
+    intervalRef.current = setInterval(() => {
+      setCount((prevCount) => {
+        if (prevCount <= 1) {
+          clearInterval(intervalRef.current);
+          return 0;
+        }
+        return prevCount - 1;
+      });
+    }, 1000);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [count]);
   return (
-    <div className={styles.card}>
-      <div className={styles.cardTop}>
+    <div className={styles.previewCard}>
+      <img src="/momo.jpeg" alt="momo" />
+      <div className={styles.previewCardTop}>
         <h3>{name}</h3>
         <span className={styles.tag}>{tag}</span>
       </div>
 
-      <p className={styles.description}>{description}</p>
+      <p className={styles.description}>{description} </p>
 
       <div className={styles.price}>
         {price}

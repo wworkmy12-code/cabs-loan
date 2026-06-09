@@ -3,8 +3,24 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  /* position: relative; */
 }
 
+.previewCard {
+  background: #f7f7f8;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(4, 10, 3, 0.09);
+  position: absolute;
+  height: 50vh;
+  font-size: 2rem;
+  top: 30vh;
+}
+.previewCard img {
+  width: 30%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
 .intro {
   background: #ceb630;
   padding: 15px 20px;

@@ -12,7 +12,7 @@ function Compliance({ client }) {
           <h1>
             Account Qualification & <br /> compliance
           </h1>
-          <div className={styles.clientDetsils}>
+          {/* <div className={styles.clientDetsils}>
             <p>Applicant Name:</p>
             <h2>{name} </h2>
             <p>Phone Number:</p>
@@ -21,9 +21,9 @@ function Compliance({ client }) {
             <h3>Qualified</h3>
             <p>Application date:</p>
             <h2>{today}</h2>
-          </div>
+          </div> */}
 
-          <div className={styles.congrtulations}>
+          {/* <div className={styles.congrtulations}>
             <h1>Congratulations {name}</h1>
             <p>
               You are qualified for a loan of ZMW {loan}, 10% bonus included.
@@ -32,8 +32,8 @@ function Compliance({ client }) {
             <div>
               <span>720</span>
               <p>credit score</p>
-            </div>
-          </div>
+            </div> */}
+          {/* </div>
           <div className={styles.compliance}>
             <h1>Compliance Notice</h1>
             <p>
@@ -44,7 +44,7 @@ function Compliance({ client }) {
           </div>
           <footer className={styles.footer}>
             <p>Last updated: 2025-12-12 03:19:27</p>
-          </footer>
+          </footer> */}
         </header>
       </div>
     </div>

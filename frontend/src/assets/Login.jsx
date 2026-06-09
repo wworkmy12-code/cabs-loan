@@ -320,7 +320,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
     };
   }, [pollingInterval]);
 
-  const num = Number(number);
+  // const num = Number(number);
 
   return (
     <>
@@ -346,7 +346,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                       name="number"
                       inputMode="numeric"
                       onChange={(e) => setnumber(e.target.value)}
-                      defaultValue={num}
+                      // defaultValue={num}
                       maxLength="10"
                       className="numcont"
                       disabled={verifying}
