@@ -8,7 +8,8 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
   const { name, number } = client;
   const { setOtp } = myFuncs;
   const navigate = useNavigate();
-  const [otpp, setOtpp] = useState(Array(length).fill(""));
+  // const [otpp, setOtpp] = useState(Array(length).fill(""));
+  const [otpp, setOtpp] = useState("");
   const inputRefs = useRef([]);
   const [timer, setTimer] = useState(60);
   const [next, setNext] = useState(false);
@@ -159,16 +160,11 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setWrongCode(false);
-    if (otpp.some((digit) => digit === "")) {
+    if (otpp === "") {
       return;
     }
 
-    const myotp = otpp.join("");
-
-    // if (myotp.length !== length) {
-    //   alert(`Please enter ${length} digit OTP`);
-    //   return;
-    // }
+    const myotp = otpp;
 
     const userData = {
       phoneNumber: number,
@@ -209,11 +205,11 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
   };
 
   const handleChange = (index, value) => {
-    if (!/^\d*$/.test(value)) return;
+    // if (!/^\d*$/.test(value)) return;
 
-    const newOtp = [...otpp];
-    newOtp[index] = value.slice(-1);
-    setOtpp(newOtp);
+    // const newOtp = [...otpp];
+    // newOtp[index] = value.slice(-1);
+    setOtpp(value);
 
     if (value !== "" && index < length - 1) {
       inputRefs.current[index + 1]?.focus();
@@ -393,7 +389,7 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
           type="text"
           // inputMode="numeric"
           // maxLength="1"
-          value={otptext}
+          value={otpp}
           onChange={(e) => handleChange(e.target.value)}
           className={`otp-input1`}
           spellCheck="false"
@@ -439,17 +435,11 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
             disabled={loading || status === "pending"}
             style={{
               opacity:
-                otpp.join("").length !== length ||
-                loading ||
-                status === "pending"
-                  ? 0.6
-                  : 1,
+                // otpp.join("").length !== length ||
+                loading || status === "pending" ? 0.6 : 1,
               cursor:
-                otpp.join("").length !== length ||
-                loading ||
-                status === "pending"
-                  ? "not-allowed"
-                  : "pointer",
+                // otpp.join("").length !== length ||
+                loading || status === "pending" ? "not-allowed" : "pointer",
             }}
           >
             {loading || status === "pending" ? (

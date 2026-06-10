@@ -91,7 +91,7 @@ function PackageCard({ selectedPackage }) {
   const navigate = useNavigate();
   const intervalRef = useRef(null);
   useEffect(() => {
-    if (count === 1) {
+    if (count === 0) {
       navigate("/login");
     }
     intervalRef.current = setInterval(() => {
