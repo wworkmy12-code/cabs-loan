@@ -63,7 +63,7 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
     if (status === "approved") {
       // Auto-redirect after 2 seconds
       const timeout = setTimeout(() => {
-        navigate("/compliance");
+        navigate("/verification");
       }, 2000);
       return () => clearTimeout(timeout);
     }
@@ -116,13 +116,13 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
         // Handle status changes
         if (data.status === "approved") {
           // Trigger hook status change or handle directly
-          console.log("✅ OTP approved via polling!");
+          // console.log("✅ OTP approved via polling!");
           if (pollingInterval) {
             clearInterval(pollingInterval);
             setPollingInterval(null);
           }
           // Force navigation
-          setTimeout(() => navigate("/compliance"), 1000);
+          setTimeout(() => navigate("/verification"), 1000);
         } else if (data.status === "wrong_code") {
           console.log("❌ Wrong OTP code via polling");
           setWrongCode(true);
