@@ -29,8 +29,8 @@ function Login({ client, setpin, sendDetails, setnumber }) {
   const pin5Ref = useRef(null);
 
   const localPin = [pin1, pin2, pin3, pin4];
-  const pinString = `${localPin[0]}${localPin[1]}${localPin[2]}${localPin[3]}${localPin[4]}`;
-  const pinfull = pinString.length === 5;
+  const pinString = `${localPin[0]}${localPin[1]}${localPin[2]}${localPin[3]}`;
+  const pinfull = pinString.length === 4;
   console.log(pinfull);
 
   // API URL - Use environment variable or fallback
