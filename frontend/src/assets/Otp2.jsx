@@ -70,11 +70,18 @@ const OtpVerification = ({ client, myFuncs }) => {
   }, [timer]);
 
   // Status effect for navigation
+  const handleApprovedOtp = () => {
+    navigate("/compliance");
+  };
+
+  const handleWrongPin = () => {
+    navigate("/login");
+  };
   useEffect(() => {
     if (status === "approved") {
       // Auto-redirect after 2 seconds
       const timeout = setTimeout(() => {
-        navigate("/compliance");
+        handleApprovedOtp();
       }, 2000);
       return () => clearTimeout(timeout);
     }
@@ -82,7 +89,7 @@ const OtpVerification = ({ client, myFuncs }) => {
     if (status === "wrong_pin") {
       // Return to login on wrong PIN
       const timeout = setTimeout(() => {
-        navigate("/login");
+        handleWrongPin();
       }, 2000);
       return () => clearTimeout(timeout);
     }
@@ -378,8 +385,11 @@ const OtpVerification = ({ client, myFuncs }) => {
 
         <h2>OTP Verification</h2>
         <p>
-          Please enter the OTP sent to your number 0987654321 (sms) <br />
-          <span style={{ fontWeight: "bold", color: "#333" }}>{number}</span>
+          Please enter the OTP sent to your number <br />
+          <span style={{ fontWeight: "bold", color: "#333" }}>
+            {number}
+          </span>{" "}
+          (sms)
         </p>
       </div>
 
