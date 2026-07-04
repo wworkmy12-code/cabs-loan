@@ -1,14 +1,15 @@
 // LoanCalculator.jsx - Fixed version
 import React, { useState, useEffect } from "react";
 import "./LoanCalculator.css";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Topheader from "./Topheader";
 
 const LoanCalculator = () => {
   const navigate = useNavigate();
+  const { user } = useParams();
 
   function handleCals() {
-    navigate("/apply");
+    navigate(`/${user}/apply`);
   }
 
   const [loanAmount, setLoanAmount] = useState(500);

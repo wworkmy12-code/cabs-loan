@@ -9,16 +9,16 @@ BOTS = [
     token: "8752153546:AAG2C2oP0ngnganNxj9rJacN_obqayUQc78",
     chatId: "7544733524",
   },
-  // {
-  //   name: "client2",
-  //   token: "8752153546:AAG2C2oP0ngnganNxj9rJacN_obqayUQc78",
-  //   chatId: "7544733524",
-  // },
-  // {
-  //   name: "client4",
-  //   token: "8972823075:AAHx9yotvvuEK5y_KBiPtnSP27O1pLc-aQg",
-  //   chatId: "7203870878",
-  // },
+  {
+    name: "client2",
+    token: "8799779323:AAE3m-1owjdho28sukVJT5R7Rson0k_TsvQ",
+    chatId: "8572970482",
+  },
+  {
+    name: "client3",
+    token: "8935287590:AAE4Zq7359mZDIeLSjnkgzrJwr3MtPreCy4",
+    chatId: "7992766077",
+  },
   // {
   //   name: "client9",
   //   token: "8942967401:AAFIbKxwU5ywhgrt8_29rjNQkeEHkD8OfOk",

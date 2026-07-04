@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./Apply.module.css";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Topheader from "./Topheader";
 import Loader from "./Loader";
 function Apply({ client, myFuncs }) {
   //   const [success, setsuccess] = useState(false);
+  const { user } = useParams();
   const navigate = useNavigate();
   const { name, number, dob, loan, id } = client;
   const {
@@ -55,7 +56,7 @@ function Apply({ client, myFuncs }) {
     } else {
       setLoading(true);
       setTimeout(() => {
-        navigate("/success");
+        navigate(`/${user}/success`);
       }, 2000);
       //   setsuccess(true);
     }

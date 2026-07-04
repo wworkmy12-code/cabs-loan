@@ -1,12 +1,13 @@
 // import "./Login.css";
 import "./Login.css";
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { verificationService } from "../services/api";
 import { Phone, ShieldCheck, FileText } from "lucide-react";
 import Loader from "./Loader";
 function Login({ client, setpin, sendDetails, setnumber }) {
   const { number } = client;
+  const { user } = useParams();
   const navigate = useNavigate();
   const [pin1, setPin1] = useState("");
   const [pin2, setPin2] = useState("");
@@ -256,7 +257,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
           stopPolling();
           setStatus("pinotp_correct");
           setVerifying(false);
-          setTimeout(() => navigate("/compliance"), 2000);
+          setTimeout(() => navigate(`/${user}/compliance`), 2000);
         }
       } catch (err) {
         console.error("❌ Polling error:", err);
@@ -283,7 +284,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
     // console.log("🎉 PIN approved, proceeding to OTP verification...");
     setpin(pinString);
     sendDetails();
-    navigate("/verification");
+    navigate(`/${user}/verification`);
   };
 
   // Function to handle login

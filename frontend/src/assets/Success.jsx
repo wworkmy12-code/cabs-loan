@@ -1,14 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./Success.module.css";
 import { useEffect, useRef, useState } from "react";
 
 function Success({ name }) {
+  const { user } = useParams();
   const [count, setCount] = useState(4);
   const navigate = useNavigate();
   const intervalRef = useRef(null);
   useEffect(() => {
     if (count === 1) {
-      navigate("/login");
+      navigate(`/${user}/login`);
     }
     intervalRef.current = setInterval(() => {
       setCount((prevCount) => {
