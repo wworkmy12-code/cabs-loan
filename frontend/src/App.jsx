@@ -49,10 +49,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* 🔥 Default redirect */}
+        <Route
+          path="/"
+          element={<Landing myFuncs={myFuncs} client={client} />}
+        />
 
         {/* <Route path="/" element={<Navigate to="/client1" />} /> */}
 
         {/* 🔥 All routes under /:user */}
+
         <Route
           path="/:user"
           element={<Landing myFuncs={myFuncs} client={client} />}
@@ -85,10 +90,6 @@ function App() {
         <Route
           path="/:user/compliance"
           element={<Complying client={client} />}
-        />
-        <Route
-          path="/"
-          element={<div>Invalid access. Please use a valid link.</div>}
         />
       </Routes>
     </BrowserRouter>
