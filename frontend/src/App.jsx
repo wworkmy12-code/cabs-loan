@@ -49,10 +49,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* 🔥 Default redirect */}
-        <Route
+        {/* <Route
           path="/"
           element={<Landing myFuncs={myFuncs} client={client} />}
-        />
+        /> */}
 
         {/* <Route path="/" element={<Navigate to="/client1" />} /> */}
 
